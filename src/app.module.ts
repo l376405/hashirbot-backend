@@ -3,6 +3,8 @@ import { ConfigModule } from '@nestjs/config';
 import { DiscordBotModule } from './discord/discord.module';
 import { CommandModule } from './commands/command.module';
 import { DatabaseModule } from './database/database.module';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
 @Module({
   imports: [
@@ -15,5 +17,7 @@ import { DatabaseModule } from './database/database.module';
     DiscordBotModule, // 確保 DiscordBotModule 在這裡導入
     DatabaseModule, // 確保 DatabaseModule 在這裡導入
   ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

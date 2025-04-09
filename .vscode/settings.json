@@ -1,0 +1,23 @@
+{
+  "jest.enableInlineErrorMessages": true,
+  "jest.autoRun": {
+    "watch": false,
+    "onSave": "test-file"
+  },
+  "jest.testExplorer": {
+    "enabled": true,
+    "showInlineError": true,
+    "useSingleWorkspace": true
+  },
+  "testing.automaticallyOpenPeekView": "onlyOnFail",
+  "testing.followRunningTest": true,
+  "testing.defaultGutterClickAction": "debug",
+  "testing.gutterEnabled": true,
+  "testing.showAllMessages": true,
+  "jest.showCoverageOnLoad": true,
+  "jest.debugCodeLens.showDebugCommand": true,
+  "jest.debugMode": true,
+  "testing.openTesting": "neverOpen",
+  "testing.preferredTestRunner": "jest",
+  "testing.automaticallyOpenTestResults": "neverOpen"
+}
