@@ -1,0 +1,47 @@
+import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import { ChatClient } from '@twurple/chat';
+import { CommandService } from '../commands/command.service';
+
+@Injectable()
+export class TwitchService implements OnModuleInit {
+  private chatClient: ChatClient;
+  private readonly logger = new Logger(TwitchService.name);
+
+  constructor(private configService: ConfigService, private commandService: CommandService) {
+    this.chatClient = new ChatClient({
+      authProvider: {
+        clientId: this.configService.get<string>('TWITCH_CLIENT_ID'),
+        accessToken: this.configService.get<string>('TWITCH_ACCESS_TOKEN'),
+      },
+      channels: [this.configService.get<string>('TWITCH_CHANNEL')],
+    });
+  }
+
+  async onModuleInit() {
+    this.logger.log('✅ TwitchService - 啟動');
+
+    try {
+      await this.chatClient.connect();
+      this.logger.log('✅ Twitch Bot 已啟動');
+    } catch (error) {
+      this.logger.error('❌ Twitch Bot 連線失敗:', error);
+      return;
+    }
+
+    this.chatClient.onMessage(async (channel, user, message) => {
+      this.logger.debug(`📩 [${channel}] ${user}: ${message}`);
+
+      try {
+        const response = await this.commandService.executeCommand('twitch', message);
+        this.logger.debug(`🔍 指令執行結果: ${response}`);
+
+        if (response) {
+          this.chatClient.say(channel, response);
+        }
+      } catch (cmdError) {
+        this.logger.error('❌ 指令執行錯誤:', cmdError);
+      }
+    });
+  }
+}
