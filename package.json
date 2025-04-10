@@ -24,9 +24,9 @@
   },
   "dependencies": {
     "@discord-nestjs/core": "^5.5.1",
-    "@nestjs/common": "^10.0.0",
+    "@nestjs/common": "^10.4.15",
     "@nestjs/config": "^4.0.2",
-    "@nestjs/core": "^10.0.0",
+    "@nestjs/core": "^10.4.15",
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/typeorm": "^11.0.0",
     "@twurple/api": "^7.2.1",
@@ -78,9 +78,12 @@
     "rootDir": ".",
     "testRegex": "(.*\\.spec\\.ts|.*\\.e2e-spec\\.ts)$",
     "transform": {
-      "^.+\\.(t|j)s$": ["ts-jest", {
-        "tsconfig": "tsconfig.json"
-      }]
+      "^.+\\.(t|j)s$": [
+        "ts-jest",
+        {
+          "tsconfig": "tsconfig.json"
+        }
+      ]
     },
     "collectCoverageFrom": [
       "**/*.(t|j)s"
@@ -90,13 +93,17 @@
     "projects": [
       {
         "displayName": "unit",
-        "testMatch": ["<rootDir>/src/**/*.spec.ts"],
+        "testMatch": [
+          "<rootDir>/src/**/*.spec.ts"
+        ],
         "testEnvironment": "node",
         "preset": "ts-jest"
       },
       {
         "displayName": "e2e",
-        "testMatch": ["<rootDir>/test/**/*.e2e-spec.ts"],
+        "testMatch": [
+          "<rootDir>/test/**/*.e2e-spec.ts"
+        ],
         "testEnvironment": "node",
         "preset": "ts-jest"
       }
