@@ -4,6 +4,7 @@ import { CommandService } from './command.service';
 import { Command } from './command.entity';
 import { CommandResponse } from './command_response.entity';
 import { CommandUserLevel } from './command_user_level.entity';
+import { CommandController } from './command.controller';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { CommandUserLevel } from './command_user_level.entity';
       CommandUserLevel
     ]),
   ],
+  controllers: [CommandController],
   providers: [CommandService],
   exports: [CommandService],
 })

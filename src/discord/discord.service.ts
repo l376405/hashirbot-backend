@@ -17,7 +17,8 @@ export class DiscordService {
 
   @Once('ready')
   onReady() {
-    this.logger.log('✅ Discord Bot 已啟動');
+    this.logger.log(`🤖 Discord Bot 已啟動: ${this.client.user.tag}`);
+    this.logger.log(`🔗 連接到伺服器: ${this.client.guilds.cache.map(guild => guild.name).join(', ')}`)
   }
 
   @On('messageCreate')
@@ -26,6 +27,8 @@ export class DiscordService {
 
     try {
       const response = await this.commandService.executeCommand('discord', message.content);
+      const displayName = message.member?.displayName || message.author.username;
+      this.logger.debug(`🤖訊息發送者: ${displayName} ，🔍 訊息內容: ${message.content}`);
       this.logger.debug(`🔍 指令執行結果: ${response}`);
 
       if (response) {

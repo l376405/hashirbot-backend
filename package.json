@@ -20,7 +20,11 @@
     "test:e2e:debug": "node --inspect -r ts-node/register -r tsconfig-paths/register node_modules/.bin/jest --selectProjects e2e --runInBand",
     "test:unit:debug": "node --inspect -r ts-node/register -r tsconfig-paths/register node_modules/.bin/jest --selectProjects unit --runInBand",
     "test:e2e": "jest --selectProjects e2e",
-    "test:all": "jest --all"
+    "test:all": "jest --all",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migration:generate": "npm run typeorm -- migration:generate -d src/data-source.ts",
+    "migration:run": "npm run typeorm -- migration:run -d src/data-source.ts",
+    "migration:revert": "npm run typeorm -- migration:revert -d src/data-source.ts"
   },
   "dependencies": {
     "@discord-nestjs/core": "^5.5.1",
@@ -37,7 +41,8 @@
     "pg": "^8.14.1",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
-    "typeorm": "^0.3.21"
+    "typeorm": "^0.3.21",
+    "typeorm-extension": "^3.7.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
