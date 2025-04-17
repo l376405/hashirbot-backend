@@ -1,3 +1,14 @@
+/**
+ * @file app.module.ts
+ * @description Main application module
+ * @author HaSHIrosabi
+ * @copyright Copyright (c) 2025 HaSHIrosabi
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this project.
+ */
+
+// ...existing code...
+
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { DiscordBotModule } from './discord/discord.module';

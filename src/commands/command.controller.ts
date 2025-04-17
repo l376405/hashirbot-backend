@@ -1,3 +1,14 @@
+/**
+ * @file command.controller.ts
+ * @description 指令控制器，負責處理指令相關的 HTTP 請求
+ * @author HaSHIrosabi
+ * @copyright Copyright (c) 2025 HaSHIrosabi
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this project.
+ */
+
+// ...existing code...
+
 import { Controller, Post, Body } from '@nestjs/common';
 import { CommandService } from './command.service';
 import { Command } from './command.entity'; // 显式导入 Command 类型

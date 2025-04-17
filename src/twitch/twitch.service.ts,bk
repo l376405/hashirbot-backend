@@ -1,3 +1,14 @@
+/**
+ * @file twitch.service.ts,bk
+ * @description 檔案描述
+ * @author HaSHIrosabi
+ * @copyright Copyright (c) 2025 HaSHIrosabi
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this project.
+ */
+
+// ...existing code...
+
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { ChatClient } from '@twurple/chat';

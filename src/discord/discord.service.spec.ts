@@ -1,3 +1,14 @@
+/**
+ * @file discord.service.spec.ts
+ * @description Discord Service Unit Test
+ * @author HaSHIrosabi
+ * @copyright Copyright (c) 2025 HaSHIrosabi
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this project.
+ */
+
+// ...existing code...
+
 import { Test, TestingModule } from '@nestjs/testing';
 import { DiscordService } from './discord.service';
 import { ConfigService } from '@nestjs/config';
@@ -93,7 +104,7 @@ describe('DiscordService', () => {
     it('應該記錄機器人啟動訊息', () => {
       const logSpy = jest.spyOn(service['logger'], 'log');
       service.onReady();
-      expect(logSpy).toHaveBeenCalledWith('✅ Discord Bot 已啟動');
+      expect(logSpy).toHaveBeenCalledWith('🤖 Discord Bot 已啟動: TestBot#0000');
     });
   });
 

@@ -1,3 +1,14 @@
+/**
+ * @file discord.service.ts
+ * @description 檔案描述
+ * @author HaSHIrosabi
+ * @copyright Copyright (c) 2025 HaSHIrosabi
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this project.
+ */
+
+// ...existing code...
+
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { InjectDiscordClient, Once, On } from '@discord-nestjs/core';
@@ -18,7 +29,7 @@ export class DiscordService {
   @Once('ready')
   onReady() {
     this.logger.log(`🤖 Discord Bot 已啟動: ${this.client.user.tag}`);
-    this.logger.log(`🔗 連接到伺服器: ${this.client.guilds.cache.map(guild => guild.name).join(', ')}`)
+    //this.logger.log(`🔗 連接到伺服器: ${this.client.guilds.cache.map(guild => guild.name).join(', ')}`)
   }
 
   @On('messageCreate')

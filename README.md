@@ -190,4 +190,4 @@ $ npm run test:cov
 
 ## 授權
 
-此專案的授權為 [UNLICENSED](https://github.com/l376405/hashirbot-backend/blob/main/LICENSE)。
+此專案的授權為 [MIT](https://github.com/l376405/hashirbot-backend/blob/main/LICENSE)。

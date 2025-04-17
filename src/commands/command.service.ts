@@ -1,9 +1,19 @@
+/**
+ * @file command.service.ts
+ * @description 指令服務，負責處理指令的執行和回應，載入及新增修改指令
+ * @author HaSHIrosabi
+ * @copyright Copyright (c) 2025 HaSHIrosabi
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this project.
+ */
+
+// ...existing code...
+
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Command } from './command.entity';
 import { CommandResponse } from './command_response.entity';
-import { CommandUserLevel } from './command_user_level.entity';
 import { CommandRegistry } from './command.registry';
 
 @Injectable()
@@ -14,9 +24,7 @@ export class CommandService implements OnModuleInit  {
     @InjectRepository(Command)
     private commandRepository: Repository<Command>,
     @InjectRepository(CommandResponse)
-    private responseRepository: Repository<CommandResponse>,
-    @InjectRepository(CommandUserLevel)
-    private userLevelRepository: Repository<CommandUserLevel>,
+    private responseRepository: Repository<CommandResponse>
   ) {}
 
   async onModuleInit() {
@@ -47,7 +55,6 @@ export class CommandService implements OnModuleInit  {
   async loadCommandsFromDatabase(): Promise<void> {
     const dbCommands = await this.commandRepository.find();
     const dbResponses = await this.responseRepository.find();
-    const dbUserLevels = await this.userLevelRepository.find();
 
     dbCommands.forEach((cmd) => {
       const commandData = {
@@ -66,13 +73,6 @@ export class CommandService implements OnModuleInit  {
           commandData.platforms[res.platform] = { response: '', userLevels: [] };
         }
         commandData.platforms[res.platform].response = res.response;
-      });
-
-      dbUserLevels.filter((level) => level.commandId === cmd.id).forEach((level) => {
-        if (!commandData.platforms[level.platform]) {
-          commandData.platforms[level.platform] = { response: '', userLevels: [] };
-        }
-        commandData.platforms[level.platform].userLevels.push(level.userLevel);
       });
 
       this.commands.set(cmd.name, commandData);

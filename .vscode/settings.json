@@ -19,5 +19,5 @@
   "jest.debugMode": true,
   "testing.openTesting": "neverOpen",
   "testing.preferredTestRunner": "jest",
-  "testing.automaticallyOpenTestResults": "neverOpen"
+  "testing.automaticallyOpenTestResults": "neverOpen",
 }
